@@ -1,0 +1,26 @@
+:root {
+    --color-fondo: #f4f6f8;
+    --color-suave: #6e6e6a;
+    --color-tarjeta: #6b6363;
+    --color-borde: #dde3ea;
+}
+
+body {
+    background-color: var(--color-fondo);
+    margin: 0;
+    padding: 0px 16px 0px 48px;
+}
+
+.subtitulo{
+    margin: 4px 0 0;
+    color: var(--color-suave)
+}
+
+.tarjeta {
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+

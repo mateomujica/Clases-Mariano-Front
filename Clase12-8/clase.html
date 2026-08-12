@@ -1,0 +1,57 @@
+<html lang="es">
+
+<head>
+    <title>
+        Gestión de escuela | Clase 1 de JS
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, 
+    initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/estilos.css">
+</head>
+
+<body>
+    <header>
+        <h1> Gestión de Escuela </h1>
+        <p class="subtitulo"> Clase 1: Fundamentos de JS</p>
+    </header>
+
+    <main> 
+        <section class="tarjeta">       
+            <h2>Cargar alumno</h2>
+            <form id="formAlumno" novalidate>
+
+
+                <div class="campo">
+                    <label for="">Nombre y apellido del alumno</label>
+                    <input type="text" id="inputNombre"
+                    placeholder="Ej: Adolfo Vera"
+                    autocomplete="off">
+                </div>
+
+
+                <div>
+                    <label for="selectMateria">Nombre de la materia</label>
+                    <select id="selectMateria"></select>
+
+
+                </div>
+
+
+                <div>
+                    <label for="inputNota">Nota (1 a 10)</label>
+                    <input type="number", id="inputNota" min="1" max="10"
+                    step="1" placeholder="Ej: 8">
+                </div>
+
+                <button type="submit">Agregar alumno</button>
+            </form>      
+        </section>
+    </main>
+
+
+
+</body>
+
+
+</html>
