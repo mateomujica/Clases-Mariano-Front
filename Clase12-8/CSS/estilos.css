@@ -3,12 +3,35 @@
     --color-suave: #6e6e6a;
     --color-tarjeta: #6b6363;
     --color-borde: #dde3ea;
+    --color-texto: #26323d;
+}
+
+/*--- Base de la pagina ---*/
+*{
+    box-sizing: border-box;
 }
 
 body {
-    background-color: var(--color-fondo);
     margin: 0;
     padding: 0px 16px 0px 48px;
+    background-color: var(--color-fondo);
+    font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    line-height: 1.5;
+    color: var(--color-texto);
+}
+
+/* Encabezados y pie de pagina */
+
+header {
+    max-width: 860px ;
+    margin: 0 auto;
+    padding: 32px 0 16px;
+}
+
+header  h1 {
+    margin: 0;
+    font-size: 28px;
+
 }
 
 .subtitulo{
@@ -16,11 +39,60 @@ body {
     color: var(--color-suave)
 }
 
+footer {
+    max-width: 860px;
+    margin: 24px auto 0; 
+    color: var(--color-suave);
+    font-size: 14px;
+    text-align: center;
+}
+
+/* *** 4. Tarjetas *** */
+
+main {
+    max-width: 860px;
+    margin: 0 auto;
+
+}
+
 .tarjeta {
     background-color: var(--color-tarjeta);
     border: 1px solid var(--color-borde);
     border-radius: 10px;
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 20px;    
 }
 
+.tarjeta h2 {
+    margin: 0 0 16px;
+    font-size: 18px;
+ 
+}
+ /* 5. formu ☻ :D */
+#formAlumno {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: flex-end;
+
+}
+
+.campo{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1 1 160px
+}
+
+.campo label {
+    font-size: 13px;
+    color: var(--color-texto);
+}
+
+input, select {
+    padding: 9px 10px;
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+    font-size: 15px;
+    font-family:  inherit; 
+}
