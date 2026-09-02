@@ -4,6 +4,7 @@
     --color-tarjeta: #6b6363;
     --color-borde: #dde3ea;
     --color-texto: #26323d;
+    --color-principal: #2563eb;
 }
 
 /*--- Base de la pagina ---*/
@@ -47,7 +48,7 @@ footer {
     text-align: center;
 }
 
-/* *** 4. Tarjetas *** */
+/* 4. Tarjetas */
 
 main {
     max-width: 860px;
@@ -68,6 +69,7 @@ main {
     font-size: 18px;
  
 }
+
  /* 5. formu ☻ :D */
 #formAlumno {
     display: flex;
@@ -95,4 +97,34 @@ input, select {
     border-radius: 6px;
     font-size: 15px;
     font-family:  inherit; 
+}
+
+input:focus, select:focus {
+    outline: 2px solid var(--color-principal); 
+    outline-offset: 1px;
+}
+
+.campo-filtro{
+    max-width: 240px;
+    margin-bottom: 16px;
+}
+
+/* Estadistica */
+
+.estadisticas {
+    display: flex;
+    gap: 16px ;
+    text-align: center;
+}
+
+.stat {
+    flex:1;
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-numero {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-principal);
 }

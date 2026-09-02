@@ -21,7 +21,6 @@
             <h2>Cargar alumno</h2>
             <form id="formAlumno" novalidate>
 
-
                 <div class="campo">
                     <label for="inputNombre">Nombre del alumno</label>
                     <input type="text" id="inputNombre"
@@ -29,16 +28,10 @@
                     autocomplete="off">
                 </div>
 
-
                 <div class="campo">
                     <label for="selectMateria">Materia</label>
-                    <select id="selectMateria">
-                        <option value="presentacion">Elegí una materia</option>
-                    </select>
-
-
+                    <select id="selectMateria"></select>
                 </div>
-
 
                 <div class="campo">
                     <label for="inputNota">Nota (1 a 10)</label>
@@ -50,10 +43,55 @@
             </form> 
             <p id="mensaje" class="mensaje"> </p>     
         </section>
+
+        <section class = "tarjeta">
+             <h2> Listado de alumnos </h2>
+            <div class="campo, campo-filtro">
+                <!-- for permite linkear el evento focus al elemento con id del mismo nombre-->
+                <label for="filtroMateria">Filtrar por Materia</label>
+                <select id="filtroMateria"></select>
+                <!-- Seccion: 3 Tabla -->
+                 <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Materia</th>
+                            <th>Nota</th>
+                            <th>Estado</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoTable"></tbody>
+                 </table>
+            </div>
+        </section>
+
+            <!-- Seccion 4 : Tarejta-->
+
+        <section class = "tarjeta estadisticas">
+            <div class="stat">
+                <span class="stat-numero" id="totalAlumnos">12
+                </span>
+                Alumnos
+            </div>
+            <div class = "span">
+                <span class = "stat-numero" id = "promedioGeneral">4
+                </span>
+                Promedio
+            </div>
+            <div class = "span">
+                <span class = "stat-numero" id = "totalAprobados">5 
+                </span>
+                Aprobado
+            </div>
+        </section>
     </main>
+    <footer>
+        <p>Abri la consola del navegador con <kbd> F12 </kbd> para ver los mensajes de la clase</p>
+    </footer>
 
-
-
+    <script src="scripts/app.js"> </script>
+    
 </body>
 
 
