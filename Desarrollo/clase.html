@@ -16,6 +16,7 @@
         <p class="subtitulo"> Clase 1: Fundamentos de JS</p>
     </header>
 
+            <!--Seccion 1: Carga de alumnos  -->
     <main> 
         <section class="tarjeta">       
             <h2>Cargar alumno</h2>
@@ -44,13 +45,20 @@
             <p id="mensaje" class="mensaje"> </p>     
         </section>
 
+                <!--Seccion 2: Listado de alumnos  -->
+                
         <section class = "tarjeta">
              <h2> Listado de alumnos </h2>
-            <div class="campo, campo-filtro">
+            <div class="campo campo-filtro">
                 <!-- for permite linkear el evento focus al elemento con id del mismo nombre-->
                 <label for="filtroMateria">Filtrar por Materia</label>
                 <select id="filtroMateria"></select>
-                <!-- Seccion: 3 Tabla -->
+                <!-- OPCIONAL LUEGO BORRAR EL FILTRADO POR ALUMNO (SOLO PEDIDO POR EJERCICIO)-->
+            <div class = "campo campo-filtro"> 
+                <label for="alumno">Filtrar por Alumno</label>
+                <select id="alumno"></select>
+            </div>
+                <!-- Seccion 3: Tabla -->
                  <table>
                     <thead>
                         <tr>
@@ -66,7 +74,8 @@
             </div>
         </section>
 
-            <!-- Seccion 4 : Tarejta-->
+
+            <!-- Seccion 4 : Tabla de Estadísticas-->
 
         <section class = "tarjeta estadisticas">
             <div class="stat">
@@ -74,12 +83,12 @@
                 </span>
                 Alumnos
             </div>
-            <div class = "span">
+            <div class = "stat">
                 <span class = "stat-numero" id = "promedioGeneral">4
                 </span>
                 Promedio
             </div>
-            <div class = "span">
+            <div class = "stat">
                 <span class = "stat-numero" id = "totalAprobados">5 
                 </span>
                 Aprobado

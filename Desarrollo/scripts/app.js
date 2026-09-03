@@ -64,6 +64,17 @@ function cargarMaterias(){
         filtroMateria.appendChild(opcionFiltro);
     }
 }
+
+//Funcion pedida por el docente para filtrar por alumno (opcional)
+function cargarAlumnos(){  
+    for (const alumno of alumnos){
+        const opcionAlumno = document.getElementsById("alumno");
+        opcionAlumno.value = alumno.id;
+        opcionAlumno.textContent = alumno.nombre;
+        selectAlumno.appendChild(opcionAlumno);
+    }
+
+}
 //#endregion
 
 
