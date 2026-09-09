@@ -35,7 +35,7 @@ let proximoId= 1;
 
 const alumno = document.getElementsById("Alumno");
 const inputNombre = document.getElementById("InputNombre");
-const selectMateria = document.getElementById("SelectMateria");
+const selectMateria = document.getElementById("selectMateria");
 const inputNota = document.getElementById("InputNota");
 const mensaje = document.getElementById("Mensaje");
 const filtroMateria = document.getElementById("FiltroMateria");
@@ -43,6 +43,8 @@ const cuerpoTabla = document.getElementById("CuerpoTabla");
 const totalAlumnos = document.getElementById("TotalAlumnos");
 const promedioGeneral = document.getElementById("PromedioGeneral");
 const totalAprobados = document.getElementById("TotalAprobados");
+const loadSection = document.getElementById("loadSection");
+
 //#endregion
 
 //#region Bloque 4 
@@ -65,17 +67,83 @@ function cargarMaterias(){
     }
 }
 
-//Funcion pedida por el docente para filtrar por alumno (opcional)
-function cargarAlumnos(){  
-    for (const alumno of alumnos){
-        const opcionAlumno = document.getElementsById("alumno");
-        opcionAlumno.value = alumno.id;
-        opcionAlumno.textContent = alumno.nombre;
-        selectAlumno.appendChild(opcionAlumno);
+
+
+function agregarAlumnos(){
+    //Creamos la ficha del alumno 
+    const nuevoAlumno = {
+        id: proximoId,
+        nombre: nombre,
+        materia: materia,
+        nota: nota,
+    }
+
+    alumnos.push(nuevoAlumno);
+    proxomoId= proximoId + 1;
+
+}
+
+function obtenerAlumnosFiltrados (){
+    const materiElegida = filtroMateria.value;
+
+    function filtrar (){
+        return alumno.materia === materiElegida
+    }
+
+    if (materiElegida == "todas")
+    {
+        return alumnos; 
+    }
+    else
+    {
+        return alumnos.filter(filtrar);
     }
 
 }
-//#endregion
+
+function renderTable(){
+    const lista = obtenerAlumnosFiltrados();
+
+    cuerpoTabla.innerHTML= "";
+
+    if (lista.length === 0 )
+    {
+        cuerpoTabla.innerHTML= "<tr><td>Todavia no hay alumnos</td></tr>"
+    }
+
+    for (const alumno of lista){
+        const estado = alumno.nota >= Nota_Minima_Aprobado ? "Aprobado" : "Desaprobado";
+        const fila = document.createElement("tr");
+        fila.innerHTML=`
+            <td>${alumno.nombre}</td>
+            <td>${alumno.materia}</td>
+            <td>${alumno.nota}</td>
+            <td>${estado}</td>
+            <td><button>Eliminar</button></td>
+        `;
+    }
+
+    cuerpoTabla.appendChild(fila);
+
+}
+cargarMaterias();
+
+agregarAlumnos("Ana Garcia", "Matematica", 9);
+agregarAlumnos("Bruno Diaz", "Programacion", 7);
+agregarAlumnos("Carla Ruiz", "Lengua", 4);
+
+renderTable();
+
+
+
+
+
+
+
+
+
+
+
 
 
 
