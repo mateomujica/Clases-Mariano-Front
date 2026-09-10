@@ -32,28 +32,26 @@ let proximoId= 1;
 
 //#region Bloque 3
 
-
-const alumno = document.getElementsById("Alumno");
-const inputNombre = document.getElementById("InputNombre");
+const formAlumno = document.getElementById("formAlumno");
+const inputNombre = document.getElementById("inputNombre");
 const selectMateria = document.getElementById("selectMateria");
-const inputNota = document.getElementById("InputNota");
-const mensaje = document.getElementById("Mensaje");
-const filtroMateria = document.getElementById("FiltroMateria");
-const cuerpoTabla = document.getElementById("CuerpoTabla");
-const totalAlumnos = document.getElementById("TotalAlumnos");
-const promedioGeneral = document.getElementById("PromedioGeneral");
-const totalAprobados = document.getElementById("TotalAprobados");
-const loadSection = document.getElementById("loadSection");
+const inputNota = document.getElementById("inputNota");
+const mensaje = document.getElementById("mensaje");
+const filtroMateria = document.getElementById("filtroMateria");
+const cuerpoTabla = document.getElementById("cuerpoTable");
+const totalAlumnos = document.getElementById("totalAlumnos");
+const promedioGeneral = document.getElementById("promedioGeneral");
+const totalAprobados = document.getElementById("totalAprobados");
 
 //#endregion
 
-//#region Bloque 4 
+//#region Bloque 4
 
 function cargarMaterias(){
-    selectMateria.innerHTML = "<option value = ''>Elegi una materia</option>";
-    filtroMateria.innerHTML = "<option value = 'todas'>Todas las materias</option>";
+    selectMateria.innerHTML = "<option value=''>Elegi una materia</option>";
+    filtroMateria.innerHTML = "<option value='todas'>Todas las materias</option>";
 
-    for (const materia  of materias ){
+    for (const materia of materias){
         const opcion = document.createElement("option");
         opcion.value = materia;
         opcion.textContent = materia;
@@ -62,70 +60,65 @@ function cargarMaterias(){
         const opcionFiltro = document.createElement("option");
         opcionFiltro.value = materia;
         opcionFiltro.textContent = materia;
-
         filtroMateria.appendChild(opcionFiltro);
     }
 }
 
-
-
-function agregarAlumnos(){
-    //Creamos la ficha del alumno 
+function agregarAlumnos(nombre, materia, nota){
     const nuevoAlumno = {
         id: proximoId,
         nombre: nombre,
         materia: materia,
         nota: nota,
-    }
+    };
 
     alumnos.push(nuevoAlumno);
-    proxomoId= proximoId + 1;
-
+    proximoId = proximoId + 1;
 }
 
-function obtenerAlumnosFiltrados (){
-    const materiElegida = filtroMateria.value;
+function obtenerAlumnosFiltrados(){
+    const materiaElegida = filtroMateria.value;
 
-    function filtrar (){
-        return alumno.materia === materiElegida
+    function filtrar(alumno){
+        return alumno.materia === materiaElegida;
     }
 
-    if (materiElegida == "todas")
-    {
-        return alumnos; 
-    }
-    else
-    {
+    if (materiaElegida === "todas"){
+        return alumnos;
+    } else {
         return alumnos.filter(filtrar);
     }
-
 }
 
 function renderTable(){
     const lista = obtenerAlumnosFiltrados();
+    cuerpoTabla.innerHTML = "";
 
-    cuerpoTabla.innerHTML= "";
-
-    if (lista.length === 0 )
-    {
-        cuerpoTabla.innerHTML= "<tr><td>Todavia no hay alumnos</td></tr>"
+    if (lista.length === 0){
+        cuerpoTabla.innerHTML = "<tr><td colspan='5'>Todavia no hay alumnos</td></tr>";
+        return;
     }
 
     for (const alumno of lista){
         const estado = alumno.nota >= Nota_Minima_Aprobado ? "Aprobado" : "Desaprobado";
         const fila = document.createElement("tr");
-        fila.innerHTML=`
+        fila.dataset.id = alumno.id; // <-- guardamos el id acá
+        fila.innerHTML = `
             <td>${alumno.nombre}</td>
             <td>${alumno.materia}</td>
             <td>${alumno.nota}</td>
             <td>${estado}</td>
-            <td><button>Eliminar</button></td>
+            <td><button class="btnEliminar">Eliminar</button></td>
         `;
+        cuerpoTabla.appendChild(fila);
     }
 
-    cuerpoTabla.appendChild(fila);
-
+    
 }
+
+
+
+//#endregion
 cargarMaterias();
 
 agregarAlumnos("Ana Garcia", "Matematica", 9);
@@ -133,7 +126,6 @@ agregarAlumnos("Bruno Diaz", "Programacion", 7);
 agregarAlumnos("Carla Ruiz", "Lengua", 4);
 
 renderTable();
-
 
 
 
